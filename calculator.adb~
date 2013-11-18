@@ -1,0 +1,28 @@
+procedure calculator is
+
+begin
+    loop -- main (infinite) loop
+      declare
+         Result : Value_Type;
+      begin
+         Put ("? ");
+         Result := Calculate;
+         Put ("= ");
+         Put_Adaptive (Result);
+         New_Line;
+      exception
+         when Overflow_Error =>
+            Put_Line ("stack overflow");
+         when Underflow_Error | Syntax_Error =>
+            Put_Line ("syntax error");
+         when Variables.Item_Not_Found_Error =>
+            Put_Line ("undefined variable");
+         when Argument_Error | Constraint_Error =>
+            Put_Line ("invalid argument");
+         when Divide_By_Zero =>
+            Put_Line ("divide by zero");
+         when No_Expression_Error =>
+            exit;
+      end;
+   end loop;
+end calculator;
