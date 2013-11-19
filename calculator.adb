@@ -18,44 +18,44 @@ procedure calculator is
         type OPERATOR_TYPE is ('*','/','+','-','?', n);
         
     --Declarations
-        c : Character;
-        eol : Boolean;
-        x : MY_VALUE_TYPE;
-        operation :OPERATOR_TYPE;
+        C : Character;
+        EOL : Boolean;
+        X : MY_VALUE_TYPE;
+        OPERATION :OPERATOR_TYPE;
         
     --Functions
         function get_operator return OPERATOR_TYPE is
         
         begin
-			Look_Ahead(c, eol); --because I need to check before exec
+			Look_Ahead(C, EOL); --because I need to check before exec
 			
             case c is
                 when '*' =>
-					get(c);
+					get(C);
 					return '*';
 				when '/' =>
-					get(c);
+					get(C);
 					return '/';
 				when '+' =>
-					get(c);
+					get(C);
 					return '+';
 				when '-' =>
-					get(c);
+					get(C);
 					return '-';
 				when '0'..'9' =>
 					begin
-					    get(x);
+					    get(X);
 						return n;
 					end;
 				when others =>
-					get(c);
+					get(C);
 					return '?';
 				end case;
         end;
     
     begin
-        operation := get_operator; --I need a private class to fix this
-        return e;
+        OPERATION := get_operator; --I need a private class to fix this
+        return E;
         
     end calculate;
 
